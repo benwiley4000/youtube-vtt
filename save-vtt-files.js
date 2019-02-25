@@ -45,59 +45,59 @@ function saveVttFiles() {
           webVttContent
         );
       });
-
-    function pad2(number) {
-      // thanks https://www.electrictoolbox.com/pad-number-two-digits-javascript/
-      return (number < 10 ? '0' : '') + number;
-    }
-
-    function pad3(number) {
-      return number >= 100 ? number : '0' + pad2(number);
-    }
-
-    // thanks https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
-    function download(filename, text) {
-      var element = document.createElement('a');
-      element.setAttribute(
-        'href',
-        'data:text/plain;charset=utf-8,' + encodeURIComponent(text)
-      );
-      element.setAttribute('download', filename);
-      element.style.display = 'none';
-      document.body.appendChild(element);
-
-      element.click();
-
-      document.body.removeChild(element);
-    }
-
-    function formatTime(time) {
-      var hours = 0;
-      var minutes = 0;
-      var seconds = 0;
-      var milliseconds = 0;
-      while (time >= 60 * 60) {
-        hours++;
-        time -= 60 * 60;
-      }
-      while (time >= 60) {
-        minutes++;
-        time -= 60;
-      }
-      while (time >= 1) {
-        seconds++;
-        time -= 1;
-      }
-      milliseconds = (time * 1000).toFixed(0);
-      return (
-        pad2(hours) +
-        ':' +
-        pad2(minutes) +
-        ':' +
-        pad2(seconds) +
-        '.' +
-        pad3(milliseconds)
-      );
-    }
   });
+
+  function pad2(number) {
+    // thanks https://www.electrictoolbox.com/pad-number-two-digits-javascript/
+    return (number < 10 ? '0' : '') + number;
+  }
+
+  function pad3(number) {
+    return number >= 100 ? number : '0' + pad2(number);
+  }
+
+  // thanks https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
+  function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute(
+      'href',
+      'data:text/plain;charset=utf-8,' + encodeURIComponent(text)
+    );
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+  }
+
+  function formatTime(time) {
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+    var milliseconds = 0;
+    while (time >= 60 * 60) {
+      hours++;
+      time -= 60 * 60;
+    }
+    while (time >= 60) {
+      minutes++;
+      time -= 60;
+    }
+    while (time >= 1) {
+      seconds++;
+      time -= 1;
+    }
+    milliseconds = (time * 1000).toFixed(0);
+    return (
+      pad2(hours) +
+      ':' +
+      pad2(minutes) +
+      ':' +
+      pad2(seconds) +
+      '.' +
+      pad3(milliseconds)
+    );
+  }
 }
