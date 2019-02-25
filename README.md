@@ -10,6 +10,7 @@ YouTube videos don't use a standard closed caption format so this script parses 
 2. Open the JavaScript console (in Chrome this is Ctrl+Shift+J/Cmd+Shift+J/).
 3. Paste the contents of `save-vtt-files.js` and hit Enter.
 4. Run the command to export and save a .vtt file for each caption track:
+
     a. To export with default settings, just run:
     ```js
     saveVttFiles();
