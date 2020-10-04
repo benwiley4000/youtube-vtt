@@ -13,7 +13,7 @@ function saveVttFiles(options) {
     playerCaptionsTracklistRenderer.translationLanguages.findIndex(function(
       language
     ) {
-      return language.languageCode === 'zh-Hans';
+      return language.languageCode === translationLanguageCode;
     }) === -1
   ) {
     console.log('Invalid translationLanguageCode:', translationLanguageCode);
