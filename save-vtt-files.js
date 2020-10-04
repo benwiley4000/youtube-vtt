@@ -16,15 +16,16 @@ function saveVttFiles(options) {
       return language.languageCode === translationLanguageCode;
     }) === -1
   ) {
-    console.log('Invalid translationLanguageCode:', translationLanguageCode);
-    console.log('Valid language codes:');
-    console.log(
+    console.warn('Valid language codes:');
+    console.warn(
       JSON.stringify(
         playerCaptionsTracklistRenderer.translationLanguages,
         null,
         1
       )
     );
+    console.warn('ERROR: Invalid translationLanguageCode:', translationLanguageCode);
+    console.warn('See above for valid language codes.');
     return;
   }
 
