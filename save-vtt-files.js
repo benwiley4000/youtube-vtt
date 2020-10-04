@@ -72,7 +72,7 @@ function saveVttFiles(options) {
         });
         var languageCodeSuffix = '-' + captionData.languageCode;
         if (translationLanguageCode) {
-          languageCodeSuffix += '->' + translationLanguageCode;
+          languageCodeSuffix += '-to-' + translationLanguageCode;
         }
         download(
           videoName + languageCodeSuffix + '.vtt',
