@@ -20,4 +20,8 @@ YouTube videos don't use a standard closed caption format so this script parses 
     AVOID_CONCURRENT_CAPTIONS = false;
     saveVttFiles();
     ```
+    c. If you'd like your captions to be auto-translated into a different language by YouTube, you can specify the language code as an option:
+    ```js
+    saveVttFiles({ translationLanguageCode: 'zh-Hans' });
+    ```
 5. For each caption track, a file will be saved called `[Video Title]-[Language Code].vtt`.
