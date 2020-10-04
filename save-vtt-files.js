@@ -1,17 +1,45 @@
 var AVOID_CONCURRENT_CAPTIONS = true;
 
-function saveVttFiles() {
+function saveVttFiles(options) {
   var youtubeArgs = ytplayer.config.args;
   var videoName = youtubeArgs.title;
-  var captionTracks = JSON.parse(youtubeArgs.player_response).captions
-    .playerCaptionsTracklistRenderer.captionTracks;
+  var playerCaptionsTracklistRenderer = JSON.parse(youtubeArgs.player_response)
+    .captions.playerCaptionsTracklistRenderer;
+
+  // handle user options
+  var translationLanguageCode = options && options.translationLanguageCode;
+  if (
+    translationLanguageCode &&
+    playerCaptionsTracklistRenderer.translationLanguages.findIndex(function(
+      language
+    ) {
+      return language.languageCode === 'zh-Hans';
+    }) === -1
+  ) {
+    console.log('Invalid translationLanguageCode:', translationLanguageCode);
+    console.log('Valid language codes:');
+    console.log(
+      JSON.stringify(
+        playerCaptionsTracklistRenderer.translationLanguages,
+        null,
+        1
+      )
+    );
+    return;
+  }
+
+  var captionTracks = playerCaptionsTracklistRenderer.captionTracks;
   if (!captionTracks.length) {
     console.warn('No captions found for ' + videoName);
     return;
   }
   var tempNode = document.createElement('div');
   captionTracks.forEach(function(captionData) {
-    fetch(captionData.baseUrl)
+    var fetchUrl = captionData.baseUrl;
+    if (translationLanguageCode) {
+      fetchUrl += '&tlang=' + translationLanguageCode;
+    }
+    fetch(fetchUrl)
       .then(function(res) {
         return res.text();
       })
@@ -41,8 +69,12 @@ function saveVttFiles() {
           tempNode.innerHTML = content;
           webVttContent += tempNode.textContent + '\n';
         });
+        var languageCodeSuffix = '-' + captionData.languageCode;
+        if (translationLanguageCode) {
+          languageCodeSuffix += '->' + translationLanguageCode;
+        }
         download(
-          videoName + '-' + captionData.languageCode + '.vtt',
+          videoName + languageCodeSuffix + '.vtt',
           webVttContent
         );
       });
