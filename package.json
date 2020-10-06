@@ -1,0 +1,35 @@
+{
+  "name": "youtube-vtt",
+  "version": "0.1.0",
+  "description": "Extract and save WebVTT (.vtt) closed caption files from YouTube videos",
+  "bin": "./bin/youtube-vtt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benwiley4000/youtube-vtt.git"
+  },
+  "keywords": [
+    "youtube",
+    "vtt",
+    "webvtt",
+    "subtitles",
+    "captions",
+    "translate"
+  ],
+  "author": "Ben Wiley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/benwiley4000/youtube-vtt/issues"
+  },
+  "homepage": "https://github.com/benwiley4000/youtube-vtt#readme",
+  "dependencies": {
+    "chrome-finder": "^1.0.7",
+    "minimist": "^1.2.5",
+    "puppeteer": "^5.3.1",
+    "puppeteer-core": "^2.1.0",
+    "puppeteer-extra": "^3.1.15",
+    "puppeteer-extra-plugin-adblocker": "^2.11.6"
+  }
+}

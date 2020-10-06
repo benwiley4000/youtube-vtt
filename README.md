@@ -25,3 +25,53 @@ YouTube videos don't use a standard closed caption format so this script parses 
     saveVttFiles({ translationLanguageCode: 'zh-Hans' });
     ```
 5. For each caption track, a file will be saved called `[Video Title]-[Language Code].vtt`.
+
+### Command line usage
+
+Alternatively, you can use a CLI which allows you to trigger downloads in a more automated fashion.
+
+#### Installation
+
+```console
+npm install -g youtube-vtt
+```
+
+You also must have the Google Chrome browser (not Chromium) installed on your system or the commands below will fail.
+
+#### Examples
+
+Download captions for a video (vtt files go into a `downloads` directory under the current working path):
+
+```console
+youtube-vtt https://www.youtube.com/watch?v=XXXXXXXXXXX
+```
+
+Translate downloaded captions to Simplified Chinese:
+
+```console
+youtube-vtt https://www.youtube.com/watch?v=XXXXXXXXXXX --translation zh-Hans
+```
+
+Allow concurrent timespans for captions (disabled by default):
+
+```console
+youtube-vtt https://www.youtube.com/watch?v=XXXXXXXXXXX --concurrent
+```
+
+Wait only one second for downloads to complete (default wait time is 5 seconds):
+
+```console
+youtube-vtt https://www.youtube.com/watch?v=XXXXXXXXXXX --wait 1000
+```
+
+Wait 15 seconds for downloads to complete (if you have a slow connection):
+
+```console
+youtube-vtt https://www.youtube.com/watch?v=XXXXXXXXXXX --wait 15000
+```
+
+Run in debug mode. The browser will open a window rather than running in the background, and it will wait for you to close it manually, allowing you to interact with the browser and inspect the page.
+
+```console
+youtube-vtt https://www.youtube.com/watch?v=XXXXXXXXXXX --debug
+```
