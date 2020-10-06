@@ -6,6 +6,8 @@ YouTube videos don't use a standard closed caption format so this script parses 
 
 ## How to use
 
+### Simple usage (visiting page in browser)
+
 1. Open a YouTube video with closed captions in a web browser
 2. Open the JavaScript console (in Chrome this is Ctrl+Shift+J/Cmd+Shift+J/).
 3. Paste the contents of `save-vtt-files.js` and hit Enter.
