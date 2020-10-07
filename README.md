@@ -77,3 +77,11 @@ Run in debug mode. The browser will open a window rather than running in the bac
 ```console
 youtube-vtt https://www.youtube.com/watch?v=XXXXXXXXXXX --debug
 ```
+
+## FAQ
+
+### Can I use this to get captions from a YouTube live stream?
+
+If the live stream will eventually complete (e.g. a live stream of an event that lasts for a few hours), and you're able to wait, then the commands above will work for that recording once it has completed.
+
+However, if you need to get captions from a live stream in progress, you can't yet use `youtube-vtt` or `saveVttFiles()`. I do have experimental code that will work to get captions for a live stream, which can be [found here](https://github.com/benwiley4000/youtube-vtt/issues/1#issuecomment-705081967). I'm still trying to figure out the best way to integrate this with the main code base, so let me know if you have any suggestions.
