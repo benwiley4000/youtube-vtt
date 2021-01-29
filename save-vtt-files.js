@@ -3,8 +3,7 @@ var AVOID_CONCURRENT_CAPTIONS = true;
 function saveVttFiles(options) {
   var youtubeArgs = ytplayer.config.args;
   var videoName = youtubeArgs.title;
-  var playerCaptionsTracklistRenderer = JSON.parse(youtubeArgs.player_response)
-    .captions.playerCaptionsTracklistRenderer;
+  var playerCaptionsTracklistRenderer = youtubeArgs.raw_player_response.captions.playerCaptionsTracklistRenderer;
 
   // handle user options
   var translationLanguageCode = options && options.translationLanguageCode;

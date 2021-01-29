@@ -60,7 +60,7 @@ puppeteer.use(AdblockerPlugin());
       AVOID_CONCURRENT_CAPTIONS = ${!concurrent};
       saveVttFiles(${JSON.stringify(options)});
     })()
-  `);
+  `).catch(err => console.error('Failed to execute script', err));
   if (!debug) {
     console.log(`waiting ${(wait / 1000).toFixed(1)} seconds...`);
     await timeout(wait);
